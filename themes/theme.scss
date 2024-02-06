@@ -1,0 +1,139 @@
+/*-- scss:defaults --*/
+
+// fonts
+// @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+
+
+$font-family-sans-serif: "Palatino Linotype", sans-serif;
+$presentation-heading-color: #00589b;
+$presentation-title-slide-text-align: "left";
+$presentation-subtitle-slide-text-align: "left";
+$presentation-h2-font-size: 1.4em;
+// $presentation-font-size-root: 1.2em;
+$mainFontSize: 35px;
+
+
+
+$link-color: #ffc72c;
+
+$selection-color: #030303;
+$selection-background-color: #ffc72c;
+
+$code-block-font-size: 0.65em;
+$code-selection-background-color: #f02e2e;
+$code-color: #cc0000;
+$code-block-bg: #f2f2f2;
+$codeFont: monospace;
+
+
+
+
+.small-font-df { 
+  font-size: 17px; 
+} 
+
+
+
+// to have image inline with text
+.center{
+  margin: 0!important;
+  height: 40px;
+}
+
+
+.blackbox {
+  color: #ec7474;
+  background-color: transparent;
+  margin: 1px;
+  padding: 5px 2px 5px 2px;
+  border: 2px dashed;
+  height: 100%;
+}
+
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/border
+.info-box {
+  margin-top: 10px;
+  margin-right: 10px;
+  border-left: 10px solid #006DAE;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #e8f4f8;
+}
+
+.box {
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 4mm ridge rgba(182, 211, 241, 0.6);;
+  padding: 10px;
+  font-size: 26px;
+  background-color: #f1ebeb;
+}
+
+.reveal .slide .goal {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  padding-left: 1em;
+  background: #ccddeb;
+}
+
+.reveal .custom-title {
+  position: absolute;
+  color: #00589b;
+  font-size: 3em;
+  text-align: right;
+  right: 20px;
+  top: -200px;
+}
+
+.reveal .custom-author {
+  position: absolute;
+  font-size: 1.4em;
+  text-align: right;
+  right: 20px;
+  top: 300px;
+}
+
+// .reveal .custom-twitter a {
+//   position: absolute;
+//   color: #1DA1F2;
+//   font-size: 1.3em;
+//   text-align: right;
+//   right: 20px;
+//   top: 470px;
+// }
+
+// .reveal .custom-url a {
+//   position: absolute;
+//   color: #00589b;
+//   font-size: 1.5em;
+//   text-align: right;
+//   right: 20px;
+//   top: 570px;
+// }
+
+// details>summary {
+//   font-size: 0.75em;
+// }
+
+// .small {
+//   font-size: 0.75em;
+// }
+
+// .reveal .slide .in-out {
+//   margin-top: 0.5em;
+//   margin-bottom: 0.5em;
+//   padding-top: 0.1em;
+//   padding-bottom: 0.1em;
+//   padding-left: 1em;
+//   background: #E8E8E8;
+//   font-family: $font-family-monospace;
+//   font-size: 0.6em;
+// }
+
+
+
