@@ -25,21 +25,42 @@ $code-color: #cc0000;
 $code-block-bg: #f2f2f2;
 $codeFont: monospace;
 
+// other color-scheme;
 
+$body-bg: #191919;
+$body-color: #fff;
+$link-color: #42affa;
+$font-family-sans-serif : Helvetica;
+$presentation-title-slide-text-align: left;
+
+// Brand
+$exts-red: rgb(207, 0, 0);
+$exts-red-darker: darken($exts-red, 4%);
+
+// Layout
+$exts-dark-shade: rgb(9, 48, 52);	
+$exts-medium-shade: rgb(66, 85, 86);
+$exts-light-shade: rgb(104, 122, 124);
+$exts-icy-block	: rgb(242, 247, 248);
+
+// 3D Course Offering
+$exts-deepen-purple: rgb(183, 65, 186);
+$exts-deepen-purple-darker: darken($exts-deepen-purple, 10%);
+$exts-develop-blue: rgb(67, 123, 214);
+$exts-develop-blue-darker: darken($exts-develop-blue, 10%);
+$exts-discover-turquoise: rgb(53, 212, 141)	
+$exts-discover-turquoise-darker: darken($exts-discover-turquoise, 10%);
 
 
 .small-font-df { 
   font-size: 17px; 
 } 
 
-
-
 // to have image inline with text
 .center{
   margin: 0!important;
   height: 40px;
 }
-
 
 .blackbox {
   color: #ec7474;
@@ -98,6 +119,17 @@ $codeFont: monospace;
   top: 300px;
 }
 
+
+.reveal .slide blockquote {
+  border-left: 5px solid $text-muted lightgray;
+  padding-left: 1em;
+}
+
+
+strong {
+  color: #CF0000;
+  text-shadow: 0px 0px 2px #fff;
+}
 // .reveal .custom-twitter a {
 //   position: absolute;
 //   color: #1DA1F2;
