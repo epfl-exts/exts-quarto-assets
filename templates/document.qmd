@@ -1,0 +1,18 @@
+---
+title: "Working with R Notebooks"
+subtitle: "Basics of Data Science Workshop"
+format: 
+  html:
+    theme: simplex
+    number-sections: true
+    code-fold: show
+    highlight-style: zenburn
+    toc: true
+    df-print: paged
+    toc-location: right
+    toc-float:
+      smooth-scroll: true
+    title-block-banner: "#413D3A"
+    title-block-banner-color: "White"
+css: https://epfl-exts.github.io/exts-quarto-assets/themes/styles-html.css
+---

@@ -1,8 +1,8 @@
 .quarto-title-block .quarto-title-banner {
   background-image: url(https://raw.githubusercontent.com/epfl-exts/exts-quarto-assets/main/logos/Extension-school-logo-2023-negatif-red.png);
   background-size: 200px;
-  background-position: left;
+  background-position: right;
   background-repeat: no-repeat;
-  padding-left: 15px;
+  padding-right: 15px;
   background-origin: content-box;
 }
