@@ -1,6 +1,6 @@
 
 
-# Quarto Assets for the EPFL DEXTS <a href="https://www.epfl.ch/education/continuing-education/"><img src="https://raw.githubusercontent.com/epfl-exts/exts-quarto-assets/main/logos/Extension-school-logo-2023-positif-red.png" align="right" height="138"/></a>
+# Quarto Assets for the EPFL DEXTS <a href="https://www.epfl.ch/education/continuing-education/"><img src="https://raw.githubusercontent.com/epfl-exts/exts-quarto-assets/main/logos/Extension-school-logo-2023-positif.png" align="right" height="138"/></a>
 
 This repo contains a series of assets to create documents with the
 Digital Extension School visual identity.
