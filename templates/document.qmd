@@ -1,6 +1,6 @@
 ---
-title: "Working with R Notebooks"
-subtitle: "Basics of Data Science Workshop"
+title: "HTML Document"
+subtitle: "Your subtitle here"
 format: 
   html:
     theme: simplex
