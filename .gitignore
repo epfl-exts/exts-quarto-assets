@@ -1,5 +1,8 @@
+# RStudio
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-.*\.DS_Store
+
+# macOS
+.DS_Store

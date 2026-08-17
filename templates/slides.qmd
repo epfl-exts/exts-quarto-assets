@@ -2,7 +2,7 @@
 title: "Slide Deck"
 subtitle: "Your subtitle here"
 author: "**EPFL Extension School**"
-format: 
+format:
   revealjs:
     transition: slide
     background-transition: fade
@@ -13,17 +13,36 @@ format:
     css: https://epfl-exts.github.io/exts-quarto-assets/themes/exts-reveal.css
 ---
 
+<!--
+Every class this theme provides, with its source, is in the showcase deck:
+https://epfl-exts.github.io/exts-quarto-assets/examples/exts-reveal-showcase.html
+-->
+
 ## Slides are level-2 headings
 
 Each `##` starts a new slide.
 
--   A `#` heading becomes a full-screen section divider.
-
--   `. . .` reveals the content after it on a click.
+- A `#` heading becomes a full-screen section divider.
+- `. . .` reveals the content after it on a click.
 
 . . .
 
 Like this.
+
+# A section divider {.subsection}
+
+## Content boxes
+
+::: {.content-box-marine}
+[The key point]{.box-title}
+
+[Use `[Title]{.box-title}` inside a box — never a `###` heading, which revealjs
+would turn into a separate slide.]{.box-body}
+:::
+
+::: {.content-box-oil}
+Supporting detail.
+:::
 
 ## Two columns
 
@@ -37,24 +56,6 @@ Right-hand content.
 :::
 ::::
 
-## Branded content boxes
-
-::: {.content-box-marine}
-`.content-box-marine` — for the point you want the room to remember.
-:::
-
-::: {.content-box-oil}
-`.content-box-oil` — for supporting detail.
-:::
-
-## A background image
-
-Set it on the slide heading:
-
-``` markdown
-## {background-image="img/figure.png" background-size="cover"}
-```
-
 ## Code
 
 ```{r}
@@ -65,19 +66,3 @@ Set it on the slide heading:
 ::: {.notes}
 Speaker notes go in a `.notes` div and are visible in speaker view (press `s`).
 :::
-
-## Using this theme as a Quarto theme instead
-
-`css:` layers plain CSS over the stock theme, which is enough for most
-decks and works straight from the URL above.
-
-For full control — fonts, heading colours, the title slide — vendor a
-copy of [`exts-reveal.scss`](/themes/exts-reveal.scss) next to your deck
-and use `theme:` instead. Quarto does not resolve `theme:` over http, so
-it has to be a local file:
-
-``` yaml
-format:
-  revealjs:
-    theme: [default, exts-reveal.scss]
-```

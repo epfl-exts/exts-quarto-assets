@@ -1,0 +1,391 @@
+---
+title: "EXTS revealjs theme"
+subtitle: "Every class, what it looks like, and how to write it"
+author: "**EPFL Extension School**"
+format:
+  revealjs:
+    footer: "epfl-exts/exts-quarto-assets"
+    slide-number: true
+    transition: slide
+    background-transition: fade
+    embed-resources: true
+    css: ../themes/exts-reveal.css
+---
+
+## What this deck is
+
+::: {.content-box-marine}
+[Two jobs, one file]{.box-title}
+
+[Every class the EXTS revealjs theme provides, shown next to the markdown that
+produces it.]{.box-body}
+:::
+
+- **For users** — scroll through, find the thing you want, copy the source.
+- **For maintainers** — this deck is the theme's visual regression check. Edit
+  `themes/exts-reveal.scss`, recompile, re-render this deck, and look at it.
+
+::: {.footnote}
+Source: `examples/exts-reveal-showcase.qmd`
+:::
+
+## Using the theme {.smaller}
+
+Put this in your deck's YAML header. That is the whole setup:
+
+``` yaml
+format:
+  revealjs:
+    css: https://epfl-exts.github.io/exts-quarto-assets/themes/exts-reveal.css
+```
+
+. . .
+
+::: {.small}
+**The alternative.** `theme:` gives you more control — fonts, heading colours,
+the title slide — but Quarto will not resolve it over `http`, so you must copy
+`exts-reveal.scss` next to your deck first:
+
+``` yaml
+format:
+  revealjs:
+    theme: [default, exts-reveal.scss]
+```
+:::
+
+# Section dividers {.subsection}
+
+Slide 4 of this deck **is** the example.
+
+## Section dividers {.subsubsection}
+
+...and this one is the other example.
+
+## Section dividers — the source
+
+Add the class to the heading. `.subsection` paints **oil**, `.subsubsection`
+paints **marine**:
+
+:::: {.columns}
+::: {.column width="50%"}
+``` markdown
+# A part of the talk
+  {.subsection}
+
+Optional standfirst.
+```
+:::
+
+::: {.column width="50%"}
+``` markdown
+## A step within it
+   {.subsubsection}
+
+Optional standfirst.
+```
+:::
+::::
+
+::: {.small}
+Put the class on the same line as the heading — it is split across two lines
+above only to fit the column. On these dark slides the theme also switches
+**bold** to purple and links to a light green, because red-on-dark fails
+contrast.
+:::
+
+## Headings and emphasis
+
+:::: {.columns}
+::: {.column width="45%"}
+Every `##` starts a new slide. A `#` becomes a full-screen divider.
+
+**Bold text is EXTS red.**
+
+> Blockquotes get a grey rule down the left.
+:::
+
+::: {.column width="55%"}
+``` markdown
+## This heading starts a slide
+
+**Bold text is EXTS red.**
+
+> Blockquotes get a grey rule
+> down the left.
+```
+:::
+::::
+
+## Content boxes {.smaller}
+
+::::: {.columns}
+:::: {.column width="45%"}
+::: {.content-box-marine}
+`.content-box-marine` — the key point.
+:::
+
+::: {.content-box-oil}
+`.content-box-oil` — supporting detail.
+
+::: {.content-box-white}
+`.content-box-white` — nests inside.
+:::
+:::
+::::
+
+:::: {.column width="55%"}
+``` markdown
+::: {.content-box-marine}
+The point you want remembered.
+:::
+
+::: {.content-box-oil}
+Supporting detail.
+
+::: {.content-box-white}
+Nests inside a dark box.
+:::
+:::
+```
+::::
+:::::
+
+::: {.tiny}
+Colon counts matter: `.columns` needs **more** colons than `.column`, which needs
+more than the boxes inside. Get it wrong and the column renders empty.
+:::
+
+## Giving a box a title
+
+::::: {.columns}
+:::: {.column width="45%"}
+::: {.content-box-oil}
+[Use `.box-title`]{.box-title}
+
+[Not a `###` heading. See the next slide for why that matters.]{.box-body}
+:::
+::::
+
+:::: {.column width="55%"}
+``` markdown
+::: {.content-box-oil}
+[Use `.box-title`]{.box-title}
+
+[Not a `###` heading.]{.box-body}
+:::
+```
+::::
+:::::
+
+## The `###`-inside-a-box trap
+
+::: {.content-box-white}
+Pandoc wraps **every heading in its own `<section>`**. revealjs treats each
+`<section>` as a separate slide — so a box built from headings silently loses
+everything after the first heading.
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+[Breaks silently]{.box-title}
+
+``` markdown
+::: {.content-box-oil}
+### My title
+Body text that will vanish.
+:::
+```
+:::
+
+::: {.column width="50%"}
+[Works]{.box-title}
+
+``` markdown
+::: {.content-box-oil}
+[My title]{.box-title}
+[Body text that stays.]{.box-body}
+:::
+```
+:::
+::::
+
+## Nesting, and what it does to colour
+
+::::: {.columns}
+:::: {.column width="48%"}
+::: {.content-box-marine}
+Bold on a dark box is **purple**, and `inline code` goes light.
+
+::: {.content-box-white}
+Nested white box: bold is **red** again and `inline code` is back to normal.
+:::
+:::
+::::
+
+:::: {.column width="52%"}
+::: {.small}
+The theme flips **bold** from EXTS red to brand purple on any dark surface,
+because red-on-dark fails contrast.
+
+A white box nested inside a dark one is a light surface again, so it flips back.
+You get this for free — there is no class to remember.
+:::
+::::
+:::::
+
+## Text size utilities
+
+::::: {.columns}
+:::: {.column width="45%"}
+Body text, for reference.
+
+::: {.small}
+`.small` — 0.8× body. Good for asides and captions.
+:::
+
+::: {.tiny}
+`.tiny` — 0.6× body. Good for source notes and dense tables.
+:::
+
+::: {.footnote}
+`.footnote` — 0.6× and grey.
+:::
+::::
+
+:::: {.column width="55%"}
+``` markdown
+::: {.small}
+0.8x body.
+:::
+
+::: {.tiny}
+0.6x body.
+:::
+
+::: {.footnote}
+0.6x body, grey.
+:::
+```
+::::
+:::::
+
+## Two columns
+
+:::: {.columns}
+::: {.column width="50%"}
+This is the left column. Columns are stock Quarto, not part of this theme, but
+you will want them constantly.
+:::
+
+::: {.column width="50%"}
+``` markdown
+:::: {.columns}
+::: {.column width="50%"}
+Left.
+:::
+
+::: {.column width="50%"}
+Right.
+:::
+::::
+```
+:::
+::::
+
+## Revealing content step by step
+
+Put `. . .` on its own line to pause.
+
+. . .
+
+This appeared on a click.
+
+. . .
+
+::: {.content-box-marine}
+So did this — it works with content boxes too.
+:::
+
+. . .
+
+::: {.small}
+Speaker notes go in a `.notes` div and show in speaker view. **Press `s` now** to
+see the notes for this slide.
+:::
+
+::: {.notes}
+These are speaker notes. They are visible here in speaker view, and never on the
+projected slide.
+:::
+
+## Background images
+
+Set the image on the slide heading itself:
+
+``` markdown
+## {background-image="img/figure.png" background-size="cover"}
+```
+
+::: {.small}
+| Attribute | Does |
+|---|---|
+| `background-size="cover"` | Fills the slide, cropping the overflow |
+| `background-size="contain"` | Fits the whole image, letterboxing it |
+| `background-opacity="0.3"` | Dims it so text stays readable on top |
+| `background-color="#425556"` | A flat colour instead of an image |
+:::
+
+## Brand colours {.smaller}
+
+::: {.small}
+| Variable | Hex | Used by |
+|---|---|---|
+| `$exts-red` | `#cf0000` | **Bold** on light surfaces |
+| `$exts-deepen-purple` | `#b741ba` | **Bold** on dark surfaces |
+| `$exts-marine` | `#00a79f` | `.content-box-marine`, `.subsubsection` |
+| `$exts-oil` | `#425556` | `.content-box-oil`, `.subsection` |
+| `$exts-light-shade` | `#687a7c` | Blockquote rule, `.footnote` |
+| `$exts-discover-turquoise` | `#35d48d` | 2023 identity green |
+:::
+
+::: {.tiny}
+`$exts-marine` and `$exts-discover-turquoise` are **deliberately different**.
+Marine is the teal the older workshop decks were built against; the turquoise is
+the current identity green. The boxes still use marine so ported decks look
+unchanged.
+:::
+
+## Cheat sheet {.smaller}
+
+::: {.small}
+| Class | Write it as | Does |
+|---|---|---|
+| `.content-box-marine` | fenced div | Teal box — the key point |
+| `.content-box-oil` | fenced div | Dark grey box — detail |
+| `.content-box-white` | fenced div | White box — nests inside the others |
+| `.box-title` | `[Title]{.box-title}` | Box heading (never `###`) |
+| `.box-body` | `[Text]{.box-body}` | Box body text |
+| `.subsection` | `# T {.subsection}` | Full-bleed oil divider |
+| `.subsubsection` | `## T {.subsubsection}` | Full-bleed marine divider |
+| `.small` / `.tiny` | fenced div | 0.8× / 0.6× body text |
+| `.footnote` | fenced div | 0.6× body text, grey |
+:::
+
+## Editing the theme {.subsection}
+
+::: {.content-box-white}
+[One thing to know]{.box-title}
+
+[`themes/exts-reveal.css` is **committed, not built on demand** — it is what
+decks load over `http`. After editing the `.scss`, run `sass` or your change
+reaches nobody.]{.box-body}
+:::
+
+``` bash
+sass themes/exts-reveal.scss themes/exts-reveal.css
+quarto render examples/exts-reveal-showcase.qmd
+```
+
+::: {.small}
+Full guide: `CONTRIBUTING.md`
+:::
