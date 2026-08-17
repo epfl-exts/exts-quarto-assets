@@ -1,0 +1,83 @@
+---
+title: "Slide Deck"
+subtitle: "Your subtitle here"
+author: "**EPFL Extension School**"
+format: 
+  revealjs:
+    transition: slide
+    background-transition: fade
+    footer: "Your footer here"
+    slide-number: true
+    df-print: paged
+    embed-resources: true
+    css: https://epfl-exts.github.io/exts-quarto-assets/themes/exts-reveal.css
+---
+
+## Slides are level-2 headings
+
+Each `##` starts a new slide.
+
+-   A `#` heading becomes a full-screen section divider.
+
+-   `. . .` reveals the content after it on a click.
+
+. . .
+
+Like this.
+
+## Two columns
+
+:::: {.columns}
+::: {.column width="50%"}
+Left-hand content.
+:::
+
+::: {.column width="50%"}
+Right-hand content.
+:::
+::::
+
+## Branded content boxes
+
+::: {.content-box-marine}
+`.content-box-marine` — for the point you want the room to remember.
+:::
+
+::: {.content-box-oil}
+`.content-box-oil` — for supporting detail.
+:::
+
+## A background image
+
+Set it on the slide heading:
+
+``` markdown
+## {background-image="img/figure.png" background-size="cover"}
+```
+
+## Code
+
+```{r}
+#| echo: true
+1 + 1
+```
+
+::: {.notes}
+Speaker notes go in a `.notes` div and are visible in speaker view (press `s`).
+:::
+
+## Using this theme as a Quarto theme instead
+
+`css:` layers plain CSS over the stock theme, which is enough for most
+decks and works straight from the URL above.
+
+For full control — fonts, heading colours, the title slide — vendor a
+copy of [`exts-reveal.scss`](/themes/exts-reveal.scss) next to your deck
+and use `theme:` instead. Quarto does not resolve `theme:` over http, so
+it has to be a local file:
+
+``` yaml
+format:
+  revealjs:
+    theme: [default, exts-reveal.scss]
+```

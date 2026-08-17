@@ -1,0 +1,187 @@
+@charset "UTF-8";
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Global adjustments   */
+/* ~~~~~~~~~~~~~~~~~~~~ */
+.reveal .slide blockquote {
+  border-left: 5px solid #687a7c;
+  padding-left: 1em;
+}
+
+/* Emphasis in EXTS red. */
+.reveal strong {
+  color: #cf0000;
+  font-weight: bold;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Content boxes        */
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Ported from the xaringan deck's .content-box-* classes so that
+   material converted from remark keeps its visual grammar. Use as
+   fenced divs:  ::: {.content-box-marine} ... :::                   */
+.reveal .content-box-oil,
+.reveal .content-box-marine,
+.reveal .content-box-white {
+  display: block;
+  padding: 0.5em 0.8em;
+  margin: 0.4em 0;
+  border-radius: 6px;
+}
+
+.reveal .content-box-oil {
+  background-color: #425556;
+  color: #ffffff;
+}
+
+.reveal .content-box-marine {
+  background-color: #00a79f;
+  color: #ffffff;
+}
+
+.reveal .content-box-white {
+  background-color: #ffffff;
+  color: #425556;
+}
+
+/* Headings inherit the box's foreground rather than the theme's. */
+.reveal .content-box-oil h1,
+.reveal .content-box-oil h2,
+.reveal .content-box-oil h3,
+.reveal .content-box-oil h4,
+.reveal .content-box-marine h1,
+.reveal .content-box-marine h2,
+.reveal .content-box-marine h3,
+.reveal .content-box-marine h4 {
+  color: #ffffff;
+}
+
+.reveal .content-box-white h1,
+.reveal .content-box-white h2,
+.reveal .content-box-white h3,
+.reveal .content-box-white h4 {
+  color: #425556;
+}
+
+/* Red-on-dark fails contrast, so bold text on any dark surface —
+   the content boxes and the section-divider slides — switches to the
+   brand green instead. */
+.reveal .content-box-oil strong,
+.reveal .content-box-marine strong,
+.reveal section.subsection strong,
+.reveal section.subsubsection strong {
+  color: #35d48d;
+}
+
+/* ...but a white box nested inside a dark one is a light surface
+   again, so bold text there goes back to red. Listed after the dark
+   rule so it wins at equal specificity. */
+.reveal .content-box-oil .content-box-white strong,
+.reveal .content-box-marine .content-box-white strong,
+.reveal .content-box-white strong {
+  color: #cf0000;
+}
+
+/* Inline code on a dark box: the default code colour is a mid purple
+   that disappears against oil/marine, so lighten it. */
+.reveal .content-box-oil :not(pre) > code,
+.reveal .content-box-marine :not(pre) > code,
+.reveal section.subsection :not(pre) > code,
+.reveal section.subsubsection :not(pre) > code {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.14);
+  padding: 0 0.2em;
+  border-radius: 3px;
+}
+
+/* ...and back to the default on a white box nested inside. */
+.reveal .content-box-white :not(pre) > code {
+  color: #cc0000;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Code inside a box should not overflow it. */
+.reveal .content-box-oil pre,
+.reveal .content-box-marine pre,
+.reveal .content-box-white pre {
+  font-size: 0.5em;
+  margin: 0.3em 0 0 0;
+}
+
+/* Links need the same treatment on dark surfaces. */
+.reveal section.subsection a,
+.reveal section.subsubsection a {
+  color: #7fe3b6;
+}
+
+/* Text inside a content box.
+   Use these INSTEAD of ### / #### headings: Pandoc wraps every heading
+   in its own <section>, and revealjs then treats that as a slide and
+   hides all but the first — so a box built from headings silently loses
+   its siblings. Write  [Title]{.box-title}  instead.               */
+.reveal .box-title {
+  display: block;
+  font-size: 1.3em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.3em;
+}
+
+.reveal .box-body {
+  display: block;
+  font-size: 1em;
+  line-height: 1.3;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Section dividers     */
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Apply to a slide:  ## Title {.subsection}                          */
+.reveal section.subsection,
+.reveal section.subsubsection {
+  color: #ffffff;
+  text-shadow: 0 0 20px #333333;
+}
+
+.reveal section.subsection h1,
+.reveal section.subsection h2,
+.reveal section.subsection h3,
+.reveal section.subsubsection h1,
+.reveal section.subsubsection h2,
+.reveal section.subsubsection h3 {
+  color: #ffffff;
+  line-height: 1.1em;
+}
+
+/* revealjs paints the slide background on a sibling element, so the
+   colour has to go there rather than on the section itself. */
+.reveal .backgrounds .slide-background.subsection .slide-background-content {
+  background-color: #425556;
+}
+
+.reveal .backgrounds .slide-background.subsubsection .slide-background-content {
+  background-color: #00a79f;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* Utilities            */
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/* .tiny was used by the xaringan decks but never actually defined in
+   the stylesheet they loaded. Defined here so ported slides work. */
+.reveal .tiny,
+.reveal .tiny p,
+.reveal .tiny li {
+  font-size: 0.6em;
+}
+
+.reveal .small {
+  font-size: 0.8em;
+}
+
+.reveal aside.aside-footnotes,
+.reveal .footnote {
+  font-size: 0.6em;
+  color: #687a7c;
+}
