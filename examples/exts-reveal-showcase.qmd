@@ -88,9 +88,9 @@ Optional standfirst.
 
 ::: {.small}
 Put the class on the same line as the heading — it is split across two lines
-above only to fit the column. On these dark slides the theme also switches
-**bold** to purple and links to a light green, because red-on-dark fails
-contrast.
+above only to fit the column. Emphasis adapts to the background: on the oil
+divider **bold** turns light purple and links stay green; on the marine one both
+go white, because marine is too light for any coloured accent to read against.
 :::
 
 ## Headings and emphasis
@@ -209,26 +209,31 @@ Body text that will vanish.
 :::
 ::::
 
-## Nesting, and what it does to colour
+## Nesting, and what it does to colour {.smaller}
 
 ::::: {.columns}
 :::: {.column width="48%"}
-::: {.content-box-marine}
-Bold on a dark box is **purple**, and `inline code` goes light.
+::: {.content-box-oil}
+On oil, **bold** is light purple.
 
 ::: {.content-box-white}
-Nested white box: bold is **red** again and `inline code` is back to normal.
+Nested white box: **bold** is red again, `inline code` normal.
 :::
+:::
+
+::: {.content-box-marine}
+On marine, **bold** is white — weight alone.
 :::
 ::::
 
 :::: {.column width="52%"}
 ::: {.small}
-The theme flips **bold** from EXTS red to brand purple on any dark surface,
-because red-on-dark fails contrast.
+Emphasis follows the surface. Oil is dark enough for a light tint of the brand
+purple. Marine is a mid-tone — no hue reaches readable contrast on it — so bold
+there is white and reads through its weight instead.
 
-A white box nested inside a dark one is a light surface again, so it flips back.
-You get this for free — there is no class to remember.
+A white box nested inside either is a light surface again, so it flips back to
+red. There is no class to remember.
 :::
 ::::
 :::::
@@ -341,7 +346,8 @@ Set the image on the slide heading itself:
 | Variable | Hex | Used by |
 |---|---|---|
 | `$exts-red` | `#cf0000` | **Bold** on light surfaces |
-| `$exts-deepen-purple` | `#b741ba` | **Bold** on dark surfaces |
+| `$exts-deepen-purple-light` | `#e2b3e3` | **Bold** on oil surfaces |
+| `$exts-white` | `#ffffff` | **Bold** on marine surfaces |
 | `$exts-marine` | `#00a79f` | `.content-box-marine`, `.subsubsection` |
 | `$exts-oil` | `#425556` | `.content-box-oil`, `.subsection` |
 | `$exts-light-shade` | `#687a7c` | Blockquote rule, `.footnote` |

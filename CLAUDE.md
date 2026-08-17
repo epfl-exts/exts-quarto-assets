@@ -61,6 +61,11 @@ reliably by rendering it as the first slide of a scratch deck; navigating by
   matching white-box override reintroduces invisible white-on-white inline code.
 - **`$exts-marine` (#00a79f) is deliberately not `$exts-discover-turquoise` (#35d48d)** —
   pre-2023 deck teal vs current identity green.
+- **Oil and marine are not both "dark".** Luminance 0.083 vs 0.301. Oil takes a
+  light accent (bold `#e2b3e3`, links `#7fe3b6`); marine is a mid-tone where no
+  hue clears 3.0, so bold is white and links are white-underlined. Compute the
+  contrast ratio against the actual surface before adding any accent — this is
+  documented with the measurements in CONTRIBUTING.md.
 - **Fenced divs need increasing colon counts as they nest.** Equal counts work
   until a div has two children, then the column renders empty with no error.
 - **`code-overflow: wrap` does nothing for revealjs.** To stop long lines

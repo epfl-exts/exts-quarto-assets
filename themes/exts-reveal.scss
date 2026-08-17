@@ -56,6 +56,10 @@ $exts-icy-block: #f2f7f8;
 
 $exts-deepen-purple: #b741ba;
 $exts-deepen-purple-darker: #923494;
+// 60% toward white. The full-strength purple is far too dark to read on
+// any of our surfaces (1.68:1 on oil); this tint keeps the hue and
+// reaches 4.42:1. See the emphasis rules below.
+$exts-deepen-purple-light: #e2b3e3;
 $exts-develop-blue: #437bd6;
 $exts-develop-blue-darker: #2961bd;
 $exts-discover-turquoise: #35d48d;
@@ -130,14 +134,43 @@ $link-color: $exts-marine;
   color: #425556;
 }
 
-/* Red-on-dark fails contrast, so bold text on any dark surface —
-   the content boxes and the section-divider slides — switches to the
-   brand purple instead. */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Emphasis on the coloured surfaces.
+
+   Our two surfaces are NOT equally dark, and that decides everything
+   here. Relative luminance: oil 0.083, marine 0.301, white 1.000.
+   Contrast ratios for bold slide text (the bar is 3.0 — revealjs text
+   is "large text" under WCAG):
+
+                        on oil    on marine
+     #cf0000 red         1.37 x     1.92 x
+     #b741ba purple      1.68 x     1.57 x     <- what this used to be
+     #e2b3e3 tint        4.42 v     1.68 x
+     #ffffff white       7.88 v     2.99 ~
+
+   Oil is genuinely dark, so a light tint of the brand purple reads
+   well on it. Marine is a MID-TONE: its luminance sits in the middle
+   of the range, so no hue can clear the bar — tinting purple toward
+   white actually gets worse before it gets better (1.57 -> 1.04 ->
+   1.95) as the tint passes through marine's own luminance. On marine
+   the only options are near-white or near-black, so emphasis there is
+   carried by WEIGHT, not colour.
+
+   (White on marine is 2.99 against a 3.0 bar — a hair under. Marine is
+   kept at #00a79f so ported decks look unchanged; revisit at the
+   re-brand.)                                                        */
+
+/* Oil is dark enough for a tinted accent. */
 .reveal .content-box-oil strong,
+.reveal section.subsection strong {
+  color: #e2b3e3;
+}
+
+/* Marine is not. Bold here is white, like the body text, and reads as
+   emphasis through its weight alone. */
 .reveal .content-box-marine strong,
-.reveal section.subsection strong,
 .reveal section.subsubsection strong {
-  color: #b741ba;
+  color: #ffffff;
 }
 
 /* ...but a white box nested inside a dark one is a light surface
@@ -148,8 +181,9 @@ $link-color: $exts-marine;
    DIVIDER rules above (0,2,2 — `section.subsection` carries an extra
    element) a bare `.reveal .content-box-white strong` at (0,2,1) would
    LOSE, so the divider cases are spelled out explicitly at (0,3,2).
-   Without them, bold in a white box on a divider slide comes out
-   purple. */
+   Without them, bold in a white box on a divider slide inherits the
+   divider's own emphasis colour — light purple or white — instead of
+   red, and the white case is invisible. */
 .reveal .content-box-oil .content-box-white strong,
 .reveal .content-box-marine .content-box-white strong,
 .reveal section.subsection .content-box-white strong,
@@ -190,10 +224,48 @@ $link-color: $exts-marine;
   margin: 0.3em 0 0 0;
 }
 
-/* Links need the same treatment on dark surfaces. */
-.reveal section.subsection a,
-.reveal section.subsubsection a {
+/* Links need the same surface-by-surface treatment as bold, and for
+   the same reason. Left alone they fall back to revealjs's default
+   blue, which is 1.78:1 on oil and 1.48:1 on marine — unreadable on
+   both. Content boxes had no link rule at all before, so links inside
+   them were hitting exactly that.
+
+                        on oil    on marine
+     #2a76dd reveal      1.78 x     1.48 x
+     #7fe3b6 green       5.09 v     1.93 x
+     #ffffff white       7.88 v     2.99 ~                          */
+
+/* Oil: the light green clears the bar comfortably. */
+.reveal .content-box-oil a,
+.reveal section.subsection a {
   color: #7fe3b6;
+}
+
+/* Marine: no hue works, so links go white and are marked by an
+   underline instead. Colour alone must never be the only signal that
+   something is a link, so this is the more accessible form anyway. */
+.reveal .content-box-marine a,
+.reveal section.subsubsection a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ...and a white box nested in either is a light surface again, so its
+   links go back to behaving like links on an ordinary slide. This has
+   to restate a colour rather than just clearing the underline: inside
+   a marine box the rule above would otherwise leave them white on
+   white. revealjs's own link blue is used because it is what an
+   unstyled link on a light slide looks like, and it clears the bar
+   there (4.44:1). Note it is NOT the brand marine — #00a79f on white
+   is only 2.99:1. Spelled out for the dividers for the same
+   specificity reason as the `strong` rules above. */
+.reveal .content-box-oil .content-box-white a,
+.reveal .content-box-marine .content-box-white a,
+.reveal section.subsection .content-box-white a,
+.reveal section.subsubsection .content-box-white a,
+.reveal .content-box-white a {
+  color: #2a76dd;
+  text-decoration: none;
 }
 
 /* Text inside a content box.

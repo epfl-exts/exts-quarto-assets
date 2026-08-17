@@ -614,11 +614,15 @@ color: #ffffff;
 color: #425556;
 }
 
+
 .reveal .content-box-oil strong,
+.reveal section.subsection strong {
+color: #e2b3e3;
+}
+
 .reveal .content-box-marine strong,
-.reveal section.subsection strong,
 .reveal section.subsubsection strong {
-color: #b741ba;
+color: #ffffff;
 }
 
 .reveal .content-box-oil .content-box-white strong,
@@ -654,9 +658,25 @@ font-size: 0.5em;
 margin: 0.3em 0 0 0;
 }
 
-.reveal section.subsection a,
-.reveal section.subsubsection a {
+
+.reveal .content-box-oil a,
+.reveal section.subsection a {
 color: #7fe3b6;
+}
+
+.reveal .content-box-marine a,
+.reveal section.subsubsection a {
+color: #ffffff;
+text-decoration: underline;
+}
+
+.reveal .content-box-oil .content-box-white a,
+.reveal .content-box-marine .content-box-white a,
+.reveal section.subsection .content-box-white a,
+.reveal section.subsubsection .content-box-white a,
+.reveal .content-box-white a {
+color: #2a76dd;
+text-decoration: none;
 }
 
 .reveal .box-title {
@@ -1280,7 +1300,7 @@ margin-right: 0; }
 <span id="cb4-4"><a href aria-label="4"></a>Optional standfirst.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <div class="small">
-<p>Put the class on the same line as the heading — it is split across two lines above only to fit the column. On these dark slides the theme also switches <strong>bold</strong> to purple and links to a light green, because red-on-dark fails contrast.</p>
+<p>Put the class on the same line as the heading — it is split across two lines above only to fit the column. Emphasis adapts to the background: on the oil divider <strong>bold</strong> turns light purple and links stay green; on the marine one both go white, because marine is too light for any coloured accent to read against.</p>
 </div>
 </section>
 <section id="headings-and-emphasis" class="slide level2">
@@ -1367,20 +1387,23 @@ margin-right: 0; }
 <span id="cb9-4"><a href aria-label="4"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
-<section id="nesting-and-what-it-does-to-colour" class="slide level2">
+<section id="nesting-and-what-it-does-to-colour" class="slide level2 smaller">
 <h2>Nesting, and what it does to colour</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div class="content-box-marine">
-<p>Bold on a dark box is <strong>purple</strong>, and <code>inline code</code> goes light.</p>
+<div class="content-box-oil">
+<p>On oil, <strong>bold</strong> is light purple.</p>
 <div class="content-box-white">
-<p>Nested white box: bold is <strong>red</strong> again and <code>inline code</code> is back to normal.</p>
+<p>Nested white box: <strong>bold</strong> is red again, <code>inline code</code> normal.</p>
 </div>
+</div>
+<div class="content-box-marine">
+<p>On marine, <strong>bold</strong> is white — weight alone.</p>
 </div>
 </div><div class="column" style="width:52%;">
 <div class="small">
-<p>The theme flips <strong>bold</strong> from EXTS red to brand purple on any dark surface, because red-on-dark fails contrast.</p>
-<p>A white box nested inside a dark one is a light surface again, so it flips back. You get this for free — there is no class to remember.</p>
+<p>Emphasis follows the surface. Oil is dark enough for a light tint of the brand purple. Marine is a mid-tone — no hue reaches readable contrast on it — so bold there is white and reads through its weight instead.</p>
+<p>A white box nested inside either is a light surface again, so it flips back to red. There is no class to remember.</p>
 </div>
 </div></div>
 </section>
@@ -1510,26 +1533,31 @@ display:block!important;
 <td><strong>Bold</strong> on light surfaces</td>
 </tr>
 <tr class="even">
-<td><code>$exts-deepen-purple</code></td>
-<td><code>#b741ba</code></td>
-<td><strong>Bold</strong> on dark surfaces</td>
+<td><code>$exts-deepen-purple-light</code></td>
+<td><code>#e2b3e3</code></td>
+<td><strong>Bold</strong> on oil surfaces</td>
 </tr>
 <tr class="odd">
+<td><code>$exts-white</code></td>
+<td><code>#ffffff</code></td>
+<td><strong>Bold</strong> on marine surfaces</td>
+</tr>
+<tr class="even">
 <td><code>$exts-marine</code></td>
 <td><code>#00a79f</code></td>
 <td><code>.content-box-marine</code>, <code>.subsubsection</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>$exts-oil</code></td>
 <td><code>#425556</code></td>
 <td><code>.content-box-oil</code>, <code>.subsection</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>$exts-light-shade</code></td>
 <td><code>#687a7c</code></td>
 <td>Blockquote rule, <code>.footnote</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>$exts-discover-turquoise</code></td>
 <td><code>#35d48d</code></td>
 <td>2023 identity green</td>

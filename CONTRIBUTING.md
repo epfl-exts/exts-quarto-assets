@@ -56,10 +56,13 @@ older xaringan workshop decks were built against. `$exts-discover-turquoise`
 so that ported decks look like the originals. `.content-box-marine` still uses
 marine. Switch it when the slides are re-branded, not before.
 
-**Bold text changes colour by surface.** It is EXTS red (`#cf0000`) normally and
-brand purple (`#b741ba`) on dark surfaces — the dark content boxes and the
-divider slides — because red-on-dark fails contrast. A `.content-box-white`
-nested inside a dark box is a light surface again, so it flips back to red.
+**Emphasis changes colour by surface, and the two coloured surfaces are not
+treated alike.** Bold is EXTS red (`#cf0000`) on light surfaces, a light purple
+(`#e2b3e3`) on oil, and plain white on marine. Links are green (`#7fe3b6`) on
+oil and white-underlined on marine. A `.content-box-white` nested inside either
+is a light surface again, so it flips back to red.
+
+The asymmetry is forced by the surfaces themselves — see below.
 
 ### Specificity, not source order
 
@@ -75,11 +78,45 @@ selectors are not as symmetrical as they look:
 The bare white-box selector beats the *box* rule but loses to the *divider*
 rule. That is why `.reveal section.subsection .content-box-white strong` and its
 `subsubsection` twin are written out explicitly. Without them, bold in a white
-box on a divider slide comes out purple, and inline code in that box renders
-white-on-white — invisible.
+box on a divider slide inherits the divider's own emphasis colour instead of
+red, and inline code in that box renders white-on-white — invisible.
 
 If you add a new dark surface, add the matching explicit white-box override at
 the same time.
+
+## Measure contrast against the actual surface
+
+The rule that emphasis "goes purple on dark" was in the theme for a long time and
+never worked. Measured against a 3.0 bar (revealjs text is "large text" under
+WCAG, so 3.0 rather than 4.5 applies to most of it):
+
+| Foreground | on oil `#425556` | on marine `#00a79f` |
+|---|---|---|
+| `#cf0000` red | 1.37 ✗ | 1.92 ✗ |
+| `#b741ba` full-strength purple | 1.68 ✗ | 1.57 ✗ |
+| `#e2b3e3` purple tinted 60% to white | **4.42 ✓** | 1.68 ✗ |
+| `#7fe3b6` light green | **5.09 ✓** | 1.93 ✗ |
+| `#2a76dd` revealjs default link blue | 1.78 ✗ | 1.48 ✗ |
+| `#ffffff` white | **7.88 ✓** | 2.99 ~ |
+
+**Oil and marine are not both "dark".** Relative luminance: oil 0.083, marine
+0.301, white 1.000. Oil is genuinely dark and takes a light accent happily.
+Marine is a **mid-tone**, and that is the whole story: an accent has to differ
+from the background in luminance, and marine sits in the middle of the range, so
+nothing but near-white or near-black can clear the bar. Tinting purple toward
+white on marine actually gets *worse* before it gets better — 1.57 → 1.04 → 1.95
+— because the tints pass straight through marine's own luminance on the way up.
+
+So on marine, emphasis is carried by **weight** and links by an **underline**.
+That is the accessible convention regardless: never let colour be the only signal.
+
+Known debt: white body text on marine is **2.99** against a 3.0 bar. Marine is
+kept at `#00a79f` so ported decks look unchanged. Darkening it to `#00867f`
+would reach 4.45 and would also let coloured accents work there — worth doing at
+the re-brand, together with the marine/turquoise question above.
+
+Before adding any coloured accent, compute the ratio against the surface it will
+actually sit on. A colour that reads well on oil may be invisible on marine.
 
 ## Adding or changing a class
 
