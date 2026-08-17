@@ -75,10 +75,19 @@
 }
 
 /* ...but a white box nested inside a dark one is a light surface
-   again, so bold text there goes back to red. Listed after the dark
-   rule so it wins at equal specificity. */
+   again, so bold text there goes back to red.
+
+   Specificity, not source order, decides this. Against the box rules
+   above (0,2,1) the nested selectors win on their own. Against the
+   DIVIDER rules above (0,2,2 — `section.subsection` carries an extra
+   element) a bare `.reveal .content-box-white strong` at (0,2,1) would
+   LOSE, so the divider cases are spelled out explicitly at (0,3,2).
+   Without them, bold in a white box on a divider slide comes out
+   purple. */
 .reveal .content-box-oil .content-box-white strong,
 .reveal .content-box-marine .content-box-white strong,
+.reveal section.subsection .content-box-white strong,
+.reveal section.subsubsection .content-box-white strong,
 .reveal .content-box-white strong {
   color: #cf0000;
 }
@@ -95,7 +104,12 @@
   border-radius: 3px;
 }
 
-/* ...and back to the default on a white box nested inside. */
+/* ...and back to the default on a white box nested inside. The divider
+   selectors are spelled out for the same specificity reason as the
+   `strong` rules above — without them white-on-white inline code on a
+   divider slide is completely invisible. */
+.reveal section.subsection .content-box-white :not(pre) > code,
+.reveal section.subsubsection .content-box-white :not(pre) > code,
 .reveal .content-box-white :not(pre) > code {
   color: #cc0000;
   background-color: transparent;
