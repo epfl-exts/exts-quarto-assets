@@ -66,12 +66,12 @@
 
 /* Red-on-dark fails contrast, so bold text on any dark surface —
    the content boxes and the section-divider slides — switches to the
-   brand green instead. */
+   brand purple instead. */
 .reveal .content-box-oil strong,
 .reveal .content-box-marine strong,
 .reveal section.subsection strong,
 .reveal section.subsubsection strong {
-  color: #35d48d;
+  color: #b741ba;
 }
 
 /* ...but a white box nested inside a dark one is a light surface
